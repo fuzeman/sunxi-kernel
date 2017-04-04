@@ -1,0 +1,153 @@
+name: sunxi-kernel
+summary: Basic kernel for sunxi devices
+version: 4.10.8-alpha.1
+type: kernel
+
+description: |
+  Kernel for sunxi devices with common drivers and modules.
+
+  See https://github.com/fuzeman/sunxi-kernel for details.
+
+architectures: [armhf]
+confinement: strict
+grade: devel
+
+parts:
+    kernel:
+        plugin: kernel
+
+        source: https://github.com/fuzeman/linux-ubuntu-zesty.git
+        source-commit: b3793a6ca016740dc3393a873e01b8a5a835b970
+        source-depth: 1
+        source-type: git
+
+        build-packages: [bc, cpio, kmod, libssl-dev]
+
+        kdefconfig: ['--makefile=debian/snapcraft.mk', 'branch=sunxi','flavour=sunxi', 'config']
+        kernel-image-target: zImage
+
+        kconfigs:
+          - CONFIG_LOCALVERSION="-sunxi"
+          - CONFIG_SQUASHFS=m
+          - CONFIG_DEVPTS_MULTIPLE_INSTANCES=y
+
+        kernel-initrd-modules:
+          - squashfs
+
+        kernel-device-trees:
+          - sun4i-a10-a1000
+          - sun4i-a10-ba10-tvbox
+          - sun4i-a10-chuwi-v7-cw0825
+          - sun4i-a10-cubieboard
+          - sun4i-a10-dserve-dsrv9703c
+          - sun4i-a10-gemei-g9
+          - sun4i-a10-hackberry
+          - sun4i-a10-hyundai-a7hd
+          - sun4i-a10-inet1
+          - sun4i-a10-inet97fv2
+          - sun4i-a10-inet9f-rev03
+          - sun4i-a10-itead-iteaduino-plus
+          - sun4i-a10-jesurun-q5
+          - sun4i-a10-marsboard
+          - sun4i-a10-mini-xplus
+          - sun4i-a10-mk802
+          - sun4i-a10-mk802ii
+          - sun4i-a10-olinuxino-lime
+          - sun4i-a10-pcduino2
+          - sun4i-a10-pcduino
+          - sun4i-a10-pov-protab2-ips9
+          - sun5i-a10s-auxtek-t003
+          - sun5i-a10s-auxtek-t004
+          - sun5i-a10s-mk802
+          - sun5i-a10s-olinuxino-micro
+          - sun5i-a10s-r7-tv-dongle
+          - sun5i-a10s-wobo-i5
+          - sun5i-a13-difrnce-dit4350
+          - sun5i-a13-empire-electronix-d709
+          - sun5i-a13-empire-electronix-m712
+          - sun5i-a13-hsg-h702
+          - sun5i-a13-inet-98v-rev2
+          - sun5i-a13-olinuxino
+          - sun5i-a13-olinuxino-micro
+          - sun5i-a13-q8-tablet
+          - sun5i-a13-utoo-p66
+          - sun5i-gr8-chip-pro
+          - sun5i-gr8-evb
+          - sun5i-r8-chip
+          - sun6i-a31-app4-evb1
+          - sun6i-a31-colombus
+          - sun6i-a31-hummingbird
+          - sun6i-a31-i7
+          - sun6i-a31-m9
+          - sun6i-a31-mele-a1000g-quad
+          - sun6i-a31s-colorfly-e708-q1
+          - sun6i-a31s-cs908
+          - sun6i-a31s-inet-q972
+          - sun6i-a31s-primo81
+          - sun6i-a31s-sina31s
+          - sun6i-a31s-sinovoip-bpi-m2
+          - sun6i-a31s-yones-toptech-bs1078-v2
+          - sun7i-a20-bananapi
+          - sun7i-a20-bananapi-m1-plus
+          - sun7i-a20-bananapro
+          - sun7i-a20-cubieboard2
+          - sun7i-a20-cubietruck
+          - sun7i-a20-hummingbird
+          - sun7i-a20-i12-tvbox
+          - sun7i-a20-icnova-swac
+          - sun7i-a20-itead-ibox
+          - sun7i-a20-lamobo-r1
+          - sun7i-a20-m3
+          - sun7i-a20-mk808c
+          - sun7i-a20-olimex-som-evb
+          - sun7i-a20-olinuxino-lime2
+          - sun7i-a20-olinuxino-lime2-emmc
+          - sun7i-a20-olinuxino-lime
+          - sun7i-a20-olinuxino-micro
+          - sun7i-a20-orangepi
+          - sun7i-a20-orangepi-mini
+          - sun7i-a20-pcduino3
+          - sun7i-a20-pcduino3-nano
+          - sun7i-a20-wexler-tab7200
+          - sun7i-a20-wits-pro-a20-dkt
+          - sun8i-a23-evb
+          - sun8i-a23-gt90h-v4
+          - sun8i-a23-inet86dz
+          - sun8i-a23-ippo-q8h-v5
+          - sun8i-a23-polaroid-mid2407pxe03
+          - sun8i-a23-polaroid-mid2809pxe04
+          - sun8i-a23-q8-tablet
+          - sun8i-a33-inet-d978-rev2
+          - sun8i-a33-olinuxino
+          - sun8i-a33-q8-tablet
+          - sun8i-a33-sinlinx-sina33
+          - sun8i-a83t-allwinner-h8homlet-v2
+          - sun8i-a83t-cubietruck-plus
+          - sun8i-h2-plus-orangepi-zero
+          - sun8i-h3-bananapi-m2-plus
+          - sun8i-h3-nanopi-m1
+          - sun8i-h3-nanopi-neo
+          - sun8i-h3-orangepi-2
+          - sun8i-h3-orangepi-lite
+          - sun8i-h3-orangepi-one
+          - sun8i-h3-orangepi-pc
+          - sun8i-h3-orangepi-pc-plus
+          - sun8i-h3-orangepi-plus2e
+          - sun8i-h3-orangepi-plus
+          - sun8i-r16-parrot
+          - sun9i-a80-cubieboard4
+          - sun9i-a80-optimus
+
+        prepare: |
+          touch .scmversion
+
+    firmware:
+        plugin: fm-firmware
+
+        source: https://github.com/fuzeman/linux-firmware.git
+        source-commit: 50e1695201e070d41ba3c2c8682b33638aec0e44
+        source-depth: 1
+        source-type: git
+
+        fm-firmware:
+          - xr819
