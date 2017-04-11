@@ -17,7 +17,7 @@ parts:
         plugin: kernel
 
         source: https://github.com/fuzeman/linux-ubuntu-zesty.git
-        source-commit: b3793a6ca016740dc3393a873e01b8a5a835b970
+        source-commit: 9f381a210844b482b9100e3e4b5e850310d0d35f
         source-depth: 1
         source-type: git
 
