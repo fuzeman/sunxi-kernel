@@ -9,7 +9,7 @@ description: |
   See https://github.com/fuzeman/sunxi-kernel for details.
 
 architectures: [armhf]
-confinement: strict
+confinement: devmode
 grade: devel
 
 parts:
