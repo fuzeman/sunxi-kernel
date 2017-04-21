@@ -1,6 +1,6 @@
 name: sunxi-kernel
 summary: Basic kernel for sunxi devices
-version: 4.10.0-2001.2-beta.1
+version: 4.10.0-2001.2-beta.2
 type: kernel
 
 description: |
@@ -27,7 +27,7 @@ parts:
         kernel-image-target: zImage
 
         fm-kernel-flavour: sunxi
-        fm-kernel-version: 4.10.0-2000.1
+        fm-kernel-version: 4.10.0-2001.2
 
         kconfigs:
           - CONFIG_SQUASHFS=m
